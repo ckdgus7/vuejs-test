@@ -1,23 +1,36 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
+    name: 'lifeCycle-hook',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (LifeCycleHook.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      import(
+        /* webpackChunkName: "LifeCycleHook" */ '../views/LifeCycleHook.vue'
+      ),
+  },
+  {
+    path: '/dom-render',
+    name: 'dom-render',
+    // route level code-splitting
+    // this generates a separate chunk (DomRender.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "DomRender" */ '../views/DomRender.vue'),
+  },
+  {
+    path: '/vuex',
+    name: 'vuex',
+    // route level code-splitting
+    // this generates a separate chunk (Vuex.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Vuex" */ '../views/Vuex.vue'),
   },
 ]
 

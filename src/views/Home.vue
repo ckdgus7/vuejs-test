@@ -1,18 +1,121 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <date-range-picker
+      v-model="dateRange"
+      :locale-data="{
+        direction: 'ltr',
+        format: 'yyyy/mm/dd',
+        separator: ' - ',
+        applyLabel: 'Apply',
+        cancelLabel: 'Cancel',
+        weekLabel: 'W',
+        customRangeLabel: 'Custom Range',
+        daysOfWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        monthNames: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        firstDay: 0,
+      }"
+      :singleDatePicker="false"
+      :timePicker="true"
+      :timePicker24Hour="true"
+      :time-picker-seconds="true"
+      :always-show-calendars="false"
+      :date-range="{
+        startDate: null,
+        endDate: null,
+      }"
+    >
+      <!--    header slot-->
+      <div slot="header" slot-scope="header" class="slot">
+        <h3>Calendar header</h3>
+        <span v-if="header.in_selection"> - in selection</span>
+      </div>
+      <!--    input slot (new slot syntax)-->
+      <template #input="picker" style="min-width: 350px;">
+        {{ picker.startDate | date }} - {{ picker.endDate | date }}
+      </template>
+      <!--    ranges (new slot syntax) -->
+      <template #ranges="ranges">
+        <div class="ranges">
+          <ul>
+            <li
+              v-for="(range, name) in ranges.ranges"
+              :key="name"
+              @click="ranges.clickRange(range)"
+            >
+              <b>{{ name }}</b>
+              <small class="text-muted"
+                >{{ range[0].toDateString() }} -
+                {{ range[1].toDateString() }}</small
+              >
+            </li>
+          </ul>
+        </div>
+      </template>
+      <!--    footer slot-->
+      <div slot="footer" slot-scope="data" class="slot">
+        <div>
+          <b class="text-black">Calendar footer</b> {{ data.rangeText }}
+        </div>
+        <div style="margin-left: auto">
+          <a
+            @click="data.clickApply"
+            v-if="!data.in_selection"
+            class="btn btn-primary btn-sm"
+            >Choose current</a
+          >
+        </div>
+      </div>
+    </date-range-picker>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import moment from 'moment'
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+  name: 'SlotsDemo',
+  data() {
+    let startDate = new Date()
+    let endDate = new Date()
+    endDate.setDate(endDate.getDate() + 6)
+    return {
+      dateRange: { startDate, endDate },
+    }
+  },
+  filters: {
+    date(val) {
+      return val ? moment(val).format('YYYY-MM-DD HH:mm:ss') : ''
+    },
+  },
 }
 </script>
+
+<style>
+.slot {
+  background-color: #aaa;
+  padding: 0.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-black {
+  color: #000;
+}
+.daterangepicker {
+  margin-left: 200px;
+}
+</style>
