@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'lifeCycle-hook',
+    name: 'LifeCycleHook',
     // route level code-splitting
     // this generates a separate chunk (LifeCycleHook.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -17,12 +17,20 @@ const routes = [
   },
   {
     path: '/dom-render',
-    name: 'dom-render',
+    name: 'DomRender',
     // route level code-splitting
     // this generates a separate chunk (DomRender.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "DomRender" */ '../views/DomRender.vue'),
+  },
+  {
+    path: '/vshow-vif-keepalive',
+    name: 'VshowVif',
+    // route level code-splitting
+    // this generates a separate chunk (VshowVif.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "VshowVif" */ '../views/VshowVif.vue'),
   },
   {
     path: '/vuex',
