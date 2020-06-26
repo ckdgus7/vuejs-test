@@ -1,5 +1,14 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <froala v-model="content"></froala>
+    <froalaView v-model="content"></froalaView>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    content: '<p>test</p><p>test입니다.</p>'
+  }
+}
+</script>

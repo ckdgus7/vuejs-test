@@ -6,7 +6,9 @@ import vuetify from './plugins/vuetify'
 import VueRangedatePicker from 'vue-rangedate-picker'
 import DateRangePicker from 'vue2-daterange-picker'
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
+import VueFroala from 'vue-froala-wysiwyg'
 
+Vue.use(VueFroala)
 Vue.use(VueRangedatePicker)
 
 Vue.config.productionTip = false
