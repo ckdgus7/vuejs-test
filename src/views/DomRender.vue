@@ -2,22 +2,11 @@
   <div class="about">
     <div class="page-br">
       <v-btn dark @click="addNum">num 숫자 증가</v-btn>
-      =>
-      {{ newNum }}
-    </div>
-    <div class="page-br">
-      <v-btn class="page-br" dark @click="toggleVShowContent">VShow show/hide</v-btn>|
-      <v-btn class="page-br" dark @click="toggleVIfContent">VIf Non Catch show/hide</v-btn>|
-      <v-btn class="page-br" dark @click="toggleVIfKeepAliveContent">VIf Catch show/hide</v-btn>
+      => {{ newNum }}
     </div>
     <Header />
     <Content :content-props="num" />
     <Footer />
-    <VShow v-show="isVShow" />
-    <VIf v-if="isVIf" />
-    <keep-alive>
-      <VIfKeepAlive v-if="isVIfKeepAlive" :is-keep-alive="true" />
-    </keep-alive>
   </div>
 </template>
 
@@ -27,16 +16,10 @@ export default {
     Header: () => import("@/components/Header.vue"),
     Content: () => import("@/components/Content.vue"),
     Footer: () => import("@/components/Footer.vue"),
-    VShow: () => import("@/components/VShow.vue"),
-    VIf: () => import("@/components/VIf.vue"),
-    VIfKeepAlive: () => import("@/components/VIfKeepAlive.vue")
   },
   data() {
     return {
       num: 1,
-      isVShow: false,
-      isVIf: false,
-      isVIfKeepAlive: false
     };
   },
   computed: {
@@ -64,15 +47,6 @@ export default {
     addNum() {
       this.num++;
     },
-    toggleVShowContent() {
-      this.isVShow = !this.isVShow;
-    },
-    toggleVIfContent() {
-      this.isVIf = !this.isVIf;
-    },
-    toggleVIfKeepAliveContent() {
-      this.isVIfKeepAlive = !this.isVIfKeepAlive;
-    }
   }
 };
 </script>
