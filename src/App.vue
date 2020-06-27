@@ -1,28 +1,19 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title>
-        <router-link to="/">
-          LifeCycle Hook
-        </router-link>
-      </v-toolbar-title>
-      <v-toolbar-title class="ml-5">
-        <router-link to="/dom-render">
-          Dom Render
-        </router-link>
-      </v-toolbar-title>
-      <v-toolbar-title class="ml-5">
-        <router-link to="/vshow-vif-keepalive">
-          v-if(basic/keep-alive) and v-show
-        </router-link>
-      </v-toolbar-title>
-    </v-app-bar>
-
+    <Navigation />
     <v-main>
       <router-view :to="$router.fullpath" />
     </v-main>
   </v-app>
 </template>
+<script>
+export default {
+  components: {
+    Navigation: () =>
+      import('@/components/Nav.vue')
+  }
+}
+</script>
 <style>
 .about {
   margin-top: 50px;

@@ -7,6 +7,8 @@ import VueRangedatePicker from 'vue-rangedate-picker'
 import DateRangePicker from 'vue2-daterange-picker'
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
 import VueFroala from 'vue-froala-wysiwyg'
+import 'froala-editor/css/froala_editor.pkgd.min.css'
+import 'froala-editor/css/froala_style.min.css'
 
 Vue.use(VueFroala)
 Vue.use(VueRangedatePicker)
