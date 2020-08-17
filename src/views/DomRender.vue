@@ -13,40 +13,41 @@
 <script>
 export default {
   components: {
-    Header: () => import("@/components/Header.vue"),
-    Content: () => import("@/components/Content.vue"),
-    Footer: () => import("@/components/Footer.vue"),
+    Header: () => import('@/components/Header.vue'),
+    Content: () => import('@/components/Content.vue'),
+    Footer: () => import('@/components/Footer.vue'),
   },
   data() {
     return {
       num: 1,
-    };
+    }
   },
   computed: {
     newNum() {
-      return this.num;
-    }
+      return this.num
+    },
   },
   created() {
-    console.log("[Parent - created 최초 실행] 페이지(or컴포넌트) 진입 시 ");
+    console.log('[Parent - created 최초 실행] 페이지(or컴포넌트) 진입 시 ')
   },
   mounted() {
     console.log(
-      "[Parent - mounted 최초 실행] 페이지(or컴포넌트) 진입 후 html이 모두 렌더링 된 후 "
-    );
+      '[Parent - mounted 최초 실행] 페이지(or컴포넌트) 진입 후 html이 모두 렌더링 된 후 '
+    )
   },
   updated() {
     console.log(
-      "[Parent - updated 실행] 페이지(or컴포넌트) 후 html이 변경될 때마다 "
-    );
+      '[Parent - updated 실행] 페이지(or컴포넌트) 후 html이 변경될 때마다 '
+    )
   },
   beforeDestroy() {
-    console.log("[Parent - beforeDestroy 실행] 페이지(route) 변경 시");
+    console.log('[Parent - beforeDestroy 실행] 페이지(route) 변경 시')
   },
   methods: {
     addNum() {
-      this.num++;
+      this.num++
+      console.log('2')
     },
-  }
-};
+  },
+}
 </script>
