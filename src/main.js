@@ -8,7 +8,7 @@ import DateRangePicker from 'vue2-daterange-picker'
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
 //Import Froala Editor 
 import 'froala-editor/js/plugins.pkgd.min.js';
-//Import third party plugins
+
 import 'froala-editor/js/third_party/embedly.min';
 import 'froala-editor/js/third_party/font_awesome.min';
 import 'froala-editor/js/third_party/spell_checker.min';
